@@ -18,6 +18,13 @@ ruby bin/run.rb
 ## Using the `Turso` client
 
 ```ruby
+Dotenv.load
+
+url = ENV['DATABASE_URL']
+authToken = ENV['AUTH_TOKEN']
+
+client = Turso.new(url, authToken)
+
 result = client.execute([
   {
     "q": "INSERT INTO todos (text, completed) VALUES (?, ?)",
